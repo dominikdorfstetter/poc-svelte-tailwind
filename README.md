@@ -2,7 +2,9 @@
 
 ---
 
-# svelte app
+# Svelte & Tailwind example app
+
+https://poc-svelte-tailwind.surge.sh/
 
 This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
 
