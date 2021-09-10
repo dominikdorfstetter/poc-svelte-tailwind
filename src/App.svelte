@@ -111,7 +111,7 @@
 		@apply font-bold py-2 px-4 rounded;
 	}
 	.btn-blue {
-		@apply bg-blue-500 text-white;
+		@apply bg-blue-500 te:xt-white;
 	}
 	.btn-blue:hover {
 		@apply bg-blue-700;
