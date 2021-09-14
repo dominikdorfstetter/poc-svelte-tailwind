@@ -1,18 +1,16 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
-	import Button from './components/button/Button.svelte';
-	import {of, BehaviorSubject, from, toArray} from 'rxjs'
+	import Button from './components/Button.svelte';
+	import {of, from, toArray} from 'rxjs'
 	import { fromFetch } from 'rxjs/fetch';
 	import {
 		map,
 		concatMap,
 		catchError,
-		switchMap,
-		startWith,
-		debounceTime
+		switchMap
 	} from 'rxjs/operators';
 	import { observe } from 'svelte-observable';
-	import { Pokemon } from 'pokemon';
+	import { Pokemon } from './models/pokemon';
 
 	const count = writable(0);
 

@@ -1,33 +1,23 @@
-*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
-
----
-
 # Svelte & Tailwind example app
 
-https://poc-svelte-tailwind.surge.sh/
+[Demo](https://poc-svelte-tailwind.surge.sh/)
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+## Technologies
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
-
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
-
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
-
+- [TailwindCSS](https://tailwindcss.com/)
+- [Svelte](https://svelte.dev/)
+- [Rollup](https://rollupjs.org)
+- [RxJS](https://rxjs.dev/)
 
 ## Get started
 
 Install the dependencies...
 
 ```bash
-cd svelte-app
 npm install
 ```
 
-...then start [Rollup](https://rollupjs.org):
+...then start the development server (hot-code reload):
 
 ```bash
 npm run dev
@@ -56,44 +46,13 @@ By default, sirv will only respond to requests that match files in `public`. Thi
 
 If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
 
-```js
+```javascript
 "start": "sirv public --single"
 ```
 
-## Using TypeScript
-
-This template comes with a script to set up a TypeScript development environment, you can run it immediately after cloning the template with:
-
-```bash
-node scripts/setupTypeScript.js
-```
-
-Or remove the script via:
-
-```bash
-rm scripts/setupTypeScript.js
-```
-
-If you want to use `baseUrl` or `path` aliases within your `tsconfig`, you need to set up `@rollup/plugin-alias` to tell Rollup to resolve the aliases. For more info, see [this StackOverflow question](https://stackoverflow.com/questions/63427935/setup-tsconfig-path-in-svelte).
-
 ## Deploying to the web
 
-### With [Vercel](https://vercel.com)
-
-Install `vercel` if you haven't already:
-
-```bash
-npm install -g vercel
-```
-
-Then, from within your project folder:
-
-```bash
-cd public
-vercel deploy --name my-project
-```
-
-### With [surge](https://surge.sh/)
+## Using [surge](https://surge.sh/)
 
 Install `surge` if you haven't already:
 
@@ -104,6 +63,5 @@ npm install -g surge
 Then, from within your project folder:
 
 ```bash
-npm run build
-surge public my-project.surge.sh
+npm run publish
 ```
