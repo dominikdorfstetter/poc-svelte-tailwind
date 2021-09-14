@@ -10,7 +10,6 @@
 		switchMap
 	} from 'rxjs/operators';
 	import { observe } from 'svelte-observable';
-	import { Pokemon } from './models/pokemon';
 
 	const count = writable(0);
 
@@ -47,18 +46,18 @@
 		catchError((err) => of({ error: true, message: err.message })),
 	);
 
-	const pokemon: ReadableStream<Pokemon[]> = observe(pokemon$);
+	const pokemon = observe(pokemon$);
 
 </script>
-<main class="p-8">
-	<h1 class="text-8xl text-center my-8 uppercase text-red-500">Svelte</h1>
-	<h2 class="text-4xl text-center">Also tailwindcss, Hello {name}</h2>
+<main class="md:p-8 sm:p-4">
+	<h1 class="text-8xl text-center my-8 uppercase text-red-500">Slender</h1>
+	<h2 class="my-7 text-4xl text-center text-white">& beautiful</h2>
 
-	<div class="my-2 text-center">
+	<div class="text-center">
 		<div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl py-8">
 			<div class="m-4 text-2xl text-center">
 				{#if ($count === 0)}
-					Counter leer
+					Everything that's created comes out of silence
 				{:else}
 					{$count}
 				{/if}
@@ -67,18 +66,18 @@
 					on:dblclick={() => count.update(n => n*n-n)}/>
 			<Button text="decrease" on:click={() => $count > 0
 				? count.update(n => n - 1)
-				: alert('Counter kann nicht weniger als 0 sein!')}/>
+				: alert('Sorry buddy, there can be nothing except nothingness!')}/>
 		</div>
 	</div>
 	<div class="text-center uppercase">
 
 	</div>
-	<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-5">
+	<div class="p-6 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-5">
 		{#await $pokemon}
-			Values will be changed when calling next instead of subscribe (o.O?)
+			<img alt="pokemons are loading" src="../assets/loading.gif" class="loading" />
 		{:then poke}
 			{#each poke as p (p)}
-				<div class="rounded overflow-hidden shadow-lg">
+				<div class="pokecard rounded overflow-hidden shadow-lg bg-white">
 					<img class="w-auto h-4xl m-auto" src={p.sprites.front_default} alt={p.name}>
 					<div class="px-6 py-4">
 						<div class="font-bold text-xl mb-2 uppercase">{p.name}</div>
@@ -104,6 +103,17 @@
 	@tailwind base;
 	@tailwind components;
 	@tailwind utilities;
+
+	.loading {
+		width: 500px;
+		height: auto;
+		margin: 0 auto;
+	}
+
+	.pokecard:hover {
+		filter: grayscale(0.9) blur(1px);
+		cursor: pointer;
+	}
 
 	.btn {
 		@apply font-bold py-2 px-4 rounded;
