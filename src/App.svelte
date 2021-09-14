@@ -72,31 +72,33 @@
 	<div class="text-center uppercase">
 
 	</div>
-	<div class="p-6 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-5">
+
 		{#await $pokemon}
-			<img alt="pokemons are loading" src="../assets/loading.gif" class="loading" />
+			<div class="loading-container">
+				<img alt="pokemons are loading" src="../assets/loading.gif" class="loading" />
+			</div>
 		{:then poke}
-			{#each poke as p (p)}
-				<div class="pokecard rounded overflow-hidden shadow-lg bg-white">
-					<img class="w-auto h-4xl m-auto" src={p.sprites.front_default} alt={p.name}>
-					<div class="px-6 py-4">
-						<div class="font-bold text-xl mb-2 uppercase">{p.name}</div>
-						<p class="text-gray-700 text-base">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-						</p>
+			<div class="p-6 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-5">
+				{#each poke as p (p)}
+					<div class="pokecard rounded overflow-hidden shadow-lg bg-white">
+						<img class="w-auto h-4xl m-auto" src={p.sprites.front_default} alt={p.name}>
+						<div class="px-6 py-4">
+							<div class="font-bold text-xl mb-2 uppercase">{p.name}</div>
+							<p class="text-gray-700 text-base">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+							</p>
+						</div>
+						<div class="px-6 pt-4 pb-2">
+							{#each p.types as type}
+								<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{type.type.name}</span>
+							{/each}
+						</div>
 					</div>
-					<div class="px-6 pt-4 pb-2">
-						{#each p.types as type}
-							<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{type.type.name}</span>
-						{/each}
-					</div>
-				</div>
-			{/each}
+				{/each}
+			</div>
 		{:catch error}
 			{@debug error}
 		{/await}
-	</div>
-
 </main>
 
 <style global lang="postcss">
@@ -105,8 +107,9 @@
 	@tailwind utilities;
 
 	.loading {
-		width: 500px;
+		min-width: 20em;
 		height: auto;
+		display: table;
 		margin: 0 auto;
 	}
 
