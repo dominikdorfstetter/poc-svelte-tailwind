@@ -8,6 +8,7 @@
 - [Svelte](https://svelte.dev/)
 - [Rollup](https://rollupjs.org)
 - [RxJS](https://rxjs.dev/)
+- [PokeAPI](https://pokeapi.co/)
 
 ## Get started
 
