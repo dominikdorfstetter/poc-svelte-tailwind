@@ -18,7 +18,7 @@ export class PokeService {
             switchMap(results => { // split the array into a stream
                 return from(results);
             }),
-            concatMap((poke) => {
+            concatMap((poke: any) => {
                 return fromFetch(poke.url).pipe(
                     switchMap((response) => {
                         if (response.ok) {
