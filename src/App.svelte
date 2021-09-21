@@ -5,9 +5,11 @@
     import Pokecard from "./components/Pokecard.svelte";
     import {PokeService} from "./services/poke.service";
     const pokeService = new PokeService();
-    const count = writable(0);
-    const pokemon = observe(pokeService.getPokemon$());
+    const count = writable(0); // Writeable
+    const pokemon = observe(pokeService.getPokemon$()); // Readable
 </script>
+
+<!-- BEGIN: TEMPLATE -->
 <main class="md:p-8 sm:p-4">
     <h1 class="text-8xl text-center my-8 uppercase text-red-500">Slender</h1>
     <h2 class="my-7 text-4xl text-center text-white">& beautiful</h2>
@@ -33,16 +35,17 @@
         <div class="loading-container">
             <img alt="pokemons are loading" src="../assets/loading.gif" class="loading"/>
         </div>
-    {:then poke}
+    {:then res}
         <div class="p-6 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-5">
-            {#each poke as p}
-                <Pokecard pokemon={p}/>
+            {#each res as poke}
+                <Pokecard pokemon={poke}/>
             {/each}
         </div>
     {:catch error}
         {@debug error}
     {/await}
 </main>
+<!-- END: TEMPLATE -->
 
 <style global lang="postcss">
     @tailwind base;
@@ -55,7 +58,6 @@
         display: table;
         margin: 0 auto;
     }
-
 
     .btn {
         @apply font-bold py-2 px-4 rounded;

@@ -4,6 +4,7 @@
     export let pokemon: Pokemon;
 </script>
 
+<!-- BEGIN: TEMPLATE -->
 <div class="pokecard rounded overflow-hidden shadow-lg bg-white">
     <img class="w-auto h-4xl m-auto" src={pokemon.sprites.front_default} alt={pokemon.name}>
     <div class="px-6 py-4">
@@ -18,6 +19,7 @@
         {/each}
     </div>
 </div>
+<!-- END: TEMPLATE -->
 
 <style lang="postcss">
     .pokecard:hover {

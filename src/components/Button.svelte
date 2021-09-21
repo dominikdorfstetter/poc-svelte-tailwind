@@ -3,7 +3,9 @@
     export let text: string = "";
 </script>
 
+<!-- BEGIN: TEMPLATE -->
 <button on:click|preventDefault on:dblclick|preventDefault class="btn-hover btn">{text}</button>
+<!-- END: TEMPLATE -->
 
 <style>
     .btn-hover {
