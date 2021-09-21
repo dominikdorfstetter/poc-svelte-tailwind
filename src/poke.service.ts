@@ -7,7 +7,7 @@ export class PokeService {
 
     public getPokemon$(): Observable<any> {
         return fromFetch(this.API_URL).pipe(
-            switchMap((response) => {
+            switchMap((response: Response) => {
                 if (response.ok) {
                     return response.json();
                 } else {
@@ -20,7 +20,7 @@ export class PokeService {
             }),
             concatMap((poke: any) => {
                 return fromFetch(poke.url).pipe(
-                    switchMap((response) => {
+                    switchMap((response: Response) => {
                         if (response.ok) {
                             return response.json();
                         } else {
