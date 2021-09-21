@@ -3,7 +3,7 @@
     import Button from './components/Button.svelte';
     import {observe} from 'svelte-observable';
     import Pokecard from "./components/Pokecard.svelte";
-    import {PokeService} from "./poke.service";
+    import {PokeService} from "./services/poke.service";
     const pokeService = new PokeService();
     const count = writable(0);
     const pokemon = observe(pokeService.getPokemon$());
