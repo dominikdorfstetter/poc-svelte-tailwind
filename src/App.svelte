@@ -10,6 +10,7 @@
 		switchMap
 	} from 'rxjs/operators';
 	import { observe } from 'svelte-observable';
+	import Pokecard from "./components/Pokecard.svelte";
 
 	const count = writable(0);
 
@@ -69,36 +70,20 @@
 				: alert('Sorry buddy, there can be nothing except nothingness!')}/>
 		</div>
 	</div>
-	<div class="text-center uppercase">
 
-	</div>
-
-		{#await $pokemon}
-			<div class="loading-container">
-				<img alt="pokemons are loading" src="../assets/loading.gif" class="loading" />
-			</div>
-		{:then poke}
-			<div class="p-6 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-5">
-				{#each poke as p (p)}
-					<div class="pokecard rounded overflow-hidden shadow-lg bg-white">
-						<img class="w-auto h-4xl m-auto" src={p.sprites.front_default} alt={p.name}>
-						<div class="px-6 py-4">
-							<div class="font-bold text-xl mb-2 uppercase">{p.name}</div>
-							<p class="text-gray-700 text-base">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-							</p>
-						</div>
-						<div class="px-6 pt-4 pb-2">
-							{#each p.types as type}
-								<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{type.type.name}</span>
-							{/each}
-						</div>
-					</div>
-				{/each}
-			</div>
-		{:catch error}
-			{@debug error}
-		{/await}
+	{#await $pokemon}
+		<div class="loading-container">
+			<img alt="pokemons are loading" src="../assets/loading.gif" class="loading" />
+		</div>
+	{:then poke}
+		<div class="p-6 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-5">
+			{#each poke as p}
+				<Pokecard pokemon={p} />
+			{/each}
+		</div>
+	{:catch error}
+		{@debug error}
+	{/await}
 </main>
 
 <style global lang="postcss">
@@ -113,10 +98,6 @@
 		margin: 0 auto;
 	}
 
-	.pokecard:hover {
-		filter: grayscale(0.9) blur(1px);
-		cursor: pointer;
-	}
 
 	.btn {
 		@apply font-bold py-2 px-4 rounded;
